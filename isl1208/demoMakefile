@@ -1,0 +1,13 @@
+MOUNT_DIR := /home/Mount/3520d
+CC := arm-hisiv100nptl-linux-gcc
+STRIP := arm-hisiv100nptl-linux-strip
+CFLAGS := -static -o
+TARGET := rtcisl1208_demo
+COPYTOTEST := cp $(TARGET) $(MOUNT_DIR)
+SRC := isl1208_demo.c
+default:
+	$(CC) $(CFLAGS) $(TARGET) $(SRC)
+	$(STRIP) $(TARGET)
+	$(COPYTOTEST)
+clean:
+	rm -rf $(TARGET)
